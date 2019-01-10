@@ -34,10 +34,6 @@ If you have questions concerning this license or the applicable additional terms
 #include "Common_local.h"
 #include "../sys/sys_lobby_backend.h"
 
-
-#define LAUNCH_TITLE_DOOM_EXECUTABLE		"doom1.exe"
-#define LAUNCH_TITLE_DOOM2_EXECUTABLE		"doom2.exe"
-
 idCVar com_wipeSeconds( "com_wipeSeconds", "1", CVAR_SYSTEM, "" );
 idCVar com_disableAutoSaves( "com_disableAutoSaves", "0", CVAR_SYSTEM | CVAR_BOOL, "" );
 idCVar com_disableAllSaves( "com_disableAllSaves", "0", CVAR_SYSTEM | CVAR_BOOL, "" );
@@ -1034,15 +1030,6 @@ bool idCommonLocal::LoadGame( const char* saveName )
 		}
 		return false;
 	}
-	
-	// RB begin
-#if defined(USE_DOOMCLASSIC)
-	if( GetCurrentGame() != DOOM3_BFG )
-	{
-		return false;
-	}
-#endif
-	// RB end
 	
 	if( session->GetSignInManager().GetMasterLocalUser() == NULL )
 	{
